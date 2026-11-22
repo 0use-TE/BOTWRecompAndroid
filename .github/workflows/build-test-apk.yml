@@ -24,8 +24,10 @@ jobs:
           java-version: '17'
       - uses: gradle/actions/setup-gradle@v4
       - uses: android-actions/setup-android@v3
+        with:
+          packages: ''
       - name: Install Android SDK components
-        run: sdkmanager 'platforms;android-36' 'ndk;30.0.16248370' 'cmake;3.30.4'
+        run: sdkmanager --channel=3 'platforms;android-36' 'ndk;30.0.16248370' 'cmake;3.30.4'
       - name: Build native dependencies
         run: bash android/deps/build_deps.sh
       - name: Build debug APK
